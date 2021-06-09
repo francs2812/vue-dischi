@@ -1,20 +1,53 @@
 <template>
   <div id="app">
-    <Header />
-    <Main />
+    <div v-if="loading">
+      <Loading />
+    </div>
+    <div v-else>
+
+      <Header />
+      <Main :status="dischi"/>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
+import Loading from './components/Loading.vue'
 
 export default {
   name: 'App',
   components: {
    Header,
-   Main
-  }
+   Main,
+   Loading
+  },
+  data: function() {
+    return {
+    loading: true,
+    url: "https://flynn.boolean.careers/exercises/api/array/music",
+    dischi:[]
+    }
+
+
+  },
+  created(){
+        axios
+            .get(this.url)
+            .then( 
+                (response) => {
+            // handle success
+            console.log(response.data.response);
+            this.dischi = response.data.response;
+            this.loading = 0
+            }
+            )
+            .catch();
+            },
+
+  
 }
 </script>
 
@@ -26,6 +59,8 @@ export default {
     box-sizing: border-box;
     }
     #app {
+      width: 100%;
+      height: 100vh;
       background-color: #1e2d3b;
       padding-bottom: 50px;
     }

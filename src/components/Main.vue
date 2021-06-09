@@ -3,12 +3,12 @@
       <div class="row">
         <div 
         class="col-2 mx-1 text-center"
-        v-for="(prova, index) in dischi"
+        v-for="(stato, index) in status"
         :key="index"
         >
-            <img :src="prova.poster" alt="image_album">
-            <h1> {{prova.title}} </h1>
-            <p> {{prova.author}} <br> {{prova.year}}</p>
+            <img :src="stato.poster" alt="image_album">
+            <h1> {{stato.title}} </h1>
+            <p> {{stato.author}} <br> {{stato.year}}</p>
         </div>
 
       </div>
@@ -16,27 +16,30 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 export default {
     name:"Main",
+    props:["status"],
     data: function() {
         return {
-            url: "https://flynn.boolean.careers/exercises/api/array/music",
-            dischi:[]
+            //url: "https://flynn.boolean.careers/exercises/api/array/music",
+            //dischi:[]
         }
     },
-    created(){
-        axios
-            .get(this.url)
-            .then( 
-                (response) => {
-            // handle success
-            console.log(response.data.response);
-            this.dischi = response.data.response;
-            }
-            )
-            .catch();
-            }
+    // created(){
+    //     axios
+    //         .get(this.url)
+    //         .then( 
+    //             (response) => {
+    //         // handle success
+    //         console.log(response.data.response);
+    //         this.dischi = response.data.response;
+    //         this.status = 0
+    //         }
+    //         )
+    //         .catch();
+    //         },
+
 
 }
 </script>
