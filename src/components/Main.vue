@@ -19,26 +19,13 @@
 //import axios from 'axios';
 export default {
     name:"Main",
-    props:["status"],
+    props:{
+        status
+        },
     data: function() {
         return {
-            //url: "https://flynn.boolean.careers/exercises/api/array/music",
-            //dischi:[]
         }
     },
-    // created(){
-    //     axios
-    //         .get(this.url)
-    //         .then( 
-    //             (response) => {
-    //         // handle success
-    //         console.log(response.data.response);
-    //         this.dischi = response.data.response;
-    //         this.status = 0
-    //         }
-    //         )
-    //         .catch();
-    //         },
 
 
 }

@@ -5,8 +5,8 @@
     </div>
     <div v-else>
 
-      <Header />
-      <Main :status="dischi"/>
+      <Header :status="dischi" @arrayFiltrato="arrayFiltrat"/>
+      <Main   :status="dischi"/>
     </div>
   </div>
 </template>
@@ -28,7 +28,9 @@ export default {
     return {
     loading: true,
     url: "https://flynn.boolean.careers/exercises/api/array/music",
-    dischi:[]
+    dischi:[],
+    dischi2:[]
+    //arrayFiltrato:[]
     }
 
 
@@ -39,13 +41,24 @@ export default {
             .then( 
                 (response) => {
             // handle success
-            console.log(response.data.response);
+            //console.log(response.data.response);
             this.dischi = response.data.response;
+            setTimeout( () => {
             this.loading = 0
+            }, 0);
             }
             )
             .catch();
             },
+  methods: {
+    arrayFiltrat: function(array){
+    return this.dischi2 = array;
+    //return console.log(array);
+     
+    }
+  },
+
+
 
   
 }
@@ -60,7 +73,7 @@ export default {
     }
     #app {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       background-color: #1e2d3b;
       padding-bottom: 50px;
     }
