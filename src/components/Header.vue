@@ -7,6 +7,7 @@
                 class="form-select form-select-lg-2 " aria-label="Default select example"
                 @change="$emit('arrayFiltrato', test)"
                 >
+                    <option value="all">all</option>
                     <option value="Rock">Rock</option>
                     <option value="Pop">Pop</option>
                     <option value="Jazz">Jazz</option>
@@ -25,8 +26,13 @@ export default {
         test: function() {
             const filtroGeneri = this.status.filter(
                 (element) => {
-                  element.genre.includes(this.genere)
-                 return  element.genre.includes(this.genere)
+                    if(this.genere == "all"){
+                        return element;
+                    }else{
+                        element.genre.includes(this.genere)
+                        return  element.genre.includes(this.genere)
+                    }
+                  
                 }
             );
            return filtroGeneri;
