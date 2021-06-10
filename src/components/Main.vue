@@ -20,7 +20,7 @@
 export default {
     name:"Main",
     props:{
-        status
+        status,
         },
     data: function() {
         return {

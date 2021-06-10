@@ -2,7 +2,7 @@
     <div class="col col-12" >
         <img src="../assets/spotify.png" alt="">
             <form id="myForm">
-                <select v-model="genere" action="/action_page.php" class="form-select form-select-lg-2 " aria-label="Default select example">
+                <select v-model="genere" class="form-select form-select-lg-2 " aria-label="Default select example">
                     <option value="Rock">Rock</option>
                     <option value="Pop">Pop</option>
                     <option value="Jazz">Jazz</option>
@@ -12,7 +12,7 @@
             <h1 ></h1>
             <!-- <br><br> -->
             <input type="submit" value="Submit"
-            @keyup="$emit('arrayFiltrato', generiFiltrati)"
+            @click.prevent="$emit('arrayFiltrato', test)"
             >
     </div>
 </template>
@@ -30,13 +30,15 @@ export default {
                  return  element.genre.includes(this.genere)
                 }
             );
-            return this.generiFiltrati = filtroGeneri ;
-        }
+           return filtroGeneri;
+        },
+    
     },
+
+    
     data: function(){
        return{
            genere:"",
-           generiFiltrati: '',
        } 
     },
 

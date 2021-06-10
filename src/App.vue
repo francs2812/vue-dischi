@@ -6,7 +6,7 @@
     <div v-else>
 
       <Header :status="dischi" @arrayFiltrato="arrayFiltrat"/>
-      <Main   :status="dischi"/>
+      <Main   :status="dischi2" />
     </div>
   </div>
 </template>
@@ -43,6 +43,8 @@ export default {
             // handle success
             //console.log(response.data.response);
             this.dischi = response.data.response;
+            this.dischi2 = response.data.response;
+
             setTimeout( () => {
             this.loading = 0
             }, 0);
@@ -52,7 +54,9 @@ export default {
             },
   methods: {
     arrayFiltrat: function(array){
-    return this.dischi2 = array;
+      console.log(array);
+      this.dischi2 =  this.dischi;
+      return this.dischi2 = array;
     //return console.log(array);
      
     }
